@@ -3,8 +3,16 @@ runtime: python11
 build:
   commands:
     build:
-      - pip install --upgrade pip setuptools wheel
-      - pip install --no-cache-dir --retries 5 -r requirements.txt
+      - pip install --upgrade pip==24.0 setuptools==68.0.0 wheel==0.42.0
+      - pip install --no-cache-dir flask==2.3.2 2>&1
+      - pip install --no-cache-dir google-generativeai==0.8.6 2>&1
+      - pip install --no-cache-dir boto3==1.28.80 botocore==1.31.80 2>&1
+      - pip install --no-cache-dir requests==2.31.0 2>&1
+      - pip install --no-cache-dir python-dotenv==1.0.0 2>&1
+      - pip install --no-cache-dir aiohttp==3.9.1 2>&1
+      - pip install --no-cache-dir pydantic==2.5.0 2>&1
+      - pip install --no-cache-dir google-auth==2.25.2 google-auth-oauthlib==1.2.0 google-auth-httplib2==0.2.0 2>&1
+      - python -c "import main; print('✅ ALL IMPORTS OK')" 2>&1
 run:
   runtime-version: python3.11
   command: python main.py
