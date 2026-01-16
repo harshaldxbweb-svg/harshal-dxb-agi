@@ -9,9 +9,14 @@ run:
   command: gunicorn --bind 0.0.0.0:8080 --workers 4 --timeout 60 main:app
   network:
     port: 8080
-  secrets:
-    ADMIN_PHONE: /run/secrets/admin_phone
-    ULTRAMSG_INSTANCE_ID: /run/secrets/ultramsg_instance_id
-    ULTRAMSG_TOKEN: /run/secrets/ultramsg_token
-    GOOGLE_API_KEY: /run/secrets/google_api_key
-    AWS_REGION: /run/secrets/aws_region
+  env:
+    - name: ADMIN_PHONE
+      value: ${ADMIN_PHONE}
+    - name: ULTRAMSG_INSTANCE_ID
+      value: ${ULTRAMSG_INSTANCE_ID}
+    - name: ULTRAMSG_TOKEN
+      value: ${ULTRAMSG_TOKEN}
+    - name: GOOGLE_API_KEY
+      value: ${GOOGLE_API_KEY}
+    - name: AWS_REGION
+      value: ${AWS_REGION}
