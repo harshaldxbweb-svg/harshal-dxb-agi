@@ -3,8 +3,8 @@ runtime: python11
 build:
   commands:
     build:
-      - pip install --upgrade pip
-      - pip install --no-cache-dir -r requirements.txt
+      - pip install --upgrade pip setuptools wheel
+      - pip install --no-cache-dir --retries 5 -r requirements.txt
 run:
   runtime-version: python3.11
   command: python main.py
@@ -15,6 +15,8 @@ run:
       value: production
     - name: FLASK_APP
       value: main.py
+    - name: PYTHONUNBUFFERED
+      value: "1"
     - name: ADMIN_PHONE
       value: "918460005557"
     - name: ULTRAMSG_INSTANCE_ID
