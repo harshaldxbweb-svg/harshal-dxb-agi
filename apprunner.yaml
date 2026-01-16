@@ -3,20 +3,25 @@ runtime: python11
 build:
   commands:
     build:
+      - pip install --upgrade pip
       - pip install --no-cache-dir -r requirements.txt
 run:
   runtime-version: python3.11
-  command: gunicorn --bind 0.0.0.0:8080 --workers 4 --timeout 60 main:app
+  command: python main.py
   network:
     port: 8080
   env:
+    - name: FLASK_ENV
+      value: production
+    - name: FLASK_APP
+      value: main.py
     - name: ADMIN_PHONE
-      value: ${ADMIN_PHONE}
+      value: "918460005557"
     - name: ULTRAMSG_INSTANCE_ID
-      value: ${ULTRAMSG_INSTANCE_ID}
+      value: "instance158856"
     - name: ULTRAMSG_TOKEN
-      value: ${ULTRAMSG_TOKEN}
+      value: "lej7tft7p96xids7"
     - name: GOOGLE_API_KEY
-      value: ${GOOGLE_API_KEY}
+      value: "AIzaSyB8Hkb9v2IetRZDhgX5jqSICrzgdWq09i0"
     - name: AWS_REGION
-      value: ${AWS_REGION}
+      value: eu-central-1
