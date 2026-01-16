@@ -1,22 +1,61 @@
-.git
-.gitignore
-__pycache__
-*.pyc
-*.pyo
-*.pyd
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
 .Python
+*.pyc
+
+# Virtual environments
 env/
 venv/
-.venv
-.env
-.DS_Store
-*.log
-.pytest_cache
-.coverage
-htmlcov/
-dist/
-build/
-*.egg-info/
+ENV/
+.venv/
+
+# IDE
 .vscode/
 .idea/
-node_modules/
+*.swp
+*.swo
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Documentation
+*.md
+docs/
+
+# Tests
+tests/
+test_*.py
+*_test.py
+
+# Deployment files
+lambda-deploy/
+*.zip
+deploy-*.sh
+deploy-*.ps1
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary
+*.tmp
+*.bak
+webhook-url.txt
+trust-policy.json
+dynamodb-policy.json
+
+# AWS
+.aws/
+
+# Environment
+.env
+.env.*
