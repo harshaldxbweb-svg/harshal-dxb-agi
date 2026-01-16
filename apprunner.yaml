@@ -1,37 +1,17 @@
 version: 1.0
-runtime: python11
+runtime: python3
 build:
   commands:
     build:
-      - pip install --upgrade pip==24.0 setuptools==68.0.0 wheel==0.42.0
-      - pip install --no-cache-dir flask==2.3.2 2>&1
-      - pip install --no-cache-dir google-generativeai==0.8.6 2>&1
-      - pip install --no-cache-dir boto3==1.28.80 botocore==1.31.80 2>&1
-      - pip install --no-cache-dir requests==2.31.0 2>&1
-      - pip install --no-cache-dir python-dotenv==1.0.0 2>&1
-      - pip install --no-cache-dir aiohttp==3.9.1 2>&1
-      - pip install --no-cache-dir pydantic==2.5.0 2>&1
-      - pip install --no-cache-dir google-auth==2.25.2 google-auth-oauthlib==1.2.0 google-auth-httplib2==0.2.0 2>&1
-      - python -c "import main; print('✅ ALL IMPORTS OK')" 2>&1
+      - pip install --upgrade pip
+      - pip install -r requirements.txt
 run:
-  runtime-version: python3.11
-  command: python main.py
+  runtime-version: 3.11
+  command: gunicorn --bind 0.0.0.0:8080 --workers 4 --timeout 120 main:app
   network:
     port: 8080
   env:
-    - name: FLASK_ENV
-      value: production
-    - name: FLASK_APP
-      value: main.py
+    - name: PORT
+      value: "8080"
     - name: PYTHONUNBUFFERED
       value: "1"
-    - name: ADMIN_PHONE
-      value: "918460005557"
-    - name: ULTRAMSG_INSTANCE_ID
-      value: "instance158856"
-    - name: ULTRAMSG_TOKEN
-      value: "lej7tft7p96xids7"
-    - name: GOOGLE_API_KEY
-      value: "AIzaSyB8Hkb9v2IetRZDhgX5jqSICrzgdWq09i0"
-    - name: AWS_REGION
-      value: eu-central-1

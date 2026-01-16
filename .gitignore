@@ -1,13 +1,59 @@
-*.pyc
+# Python
 __pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Environment variables
 .env
 .env.local
-.DS_Store
-*.log
-node_modules/
-venv/
+.env.*.local
+
+# IDE
 .vscode/
 .idea/
-dist/
-build/
-*.egg-info/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Deployment
+lambda-deploy/
+lambda-deployment.zip
+lambda-update.zip
+webhook-url.txt
+
+# Temporary files
+*.tmp
+*.bak
+trust-policy.json
+dynamodb-policy.json
+
+# AWS
+.aws/
